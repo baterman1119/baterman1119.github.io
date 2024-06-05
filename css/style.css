@@ -1,0 +1,130 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+}
+
+header, footer {
+    background-color: #92b6bd;
+    color: #fff;
+    padding: 5px 0;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header {
+    top: 0;
+    height: 80px;
+}
+
+footer {
+    bottom: 0;
+    height: 40px;
+}
+
+h1 {
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* 情報入力欄フィールド */
+.container {
+    width: 800px;
+    border-radius: 7px;
+    padding: 0 0 18px 100px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    margin-top: 102px; /* header height */
+    margin-bottom: 58px; /* footer height */
+}
+
+/* 入力項目 */
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* 郵便番号検索ボタン */
+.search_btn {
+    width: 20mm;
+    height: 10mm;
+    font-size: 13px;
+    color: #fff;
+    background-color: #3674e6;
+    border: none;
+    border-radius: 5px;
+    margin-left: 3mm;
+}
+.search_btn:hover {
+    background-color: rgb(13, 99, 156);
+}
+
+/* 決済情報入力欄 */
+.payinfo_field {
+    width: 90%;
+    border-radius: 7px;
+    background-color: #e7e5e5;
+    display: none;
+    padding: 10px 0px 10px 20px;
+}
+
+/* 短い入力欄 */
+.short_field {
+    width: 45mm;
+}
+
+/* 通常入力欄 */
+.middle_field {
+    width: 90mm;
+}
+
+/* 長い入力欄 */
+.long_field {
+    width: 180mm;
+}
+
+/* 決済方法 */
+#payment {
+    width: 50mm;
+}
+
+/* 入力情報確認ボタン */
+.submit_btn {
+    margin-top: 30px;
+    padding: 10px 20px;
+    width: 45mm;
+    font-size: 18px;
+    color: #fff;
+    background-color: #ff8019;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.submit_btn:hover {
+    background-color: #ff5100;
+}
