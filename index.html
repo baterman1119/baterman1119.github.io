@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お客様情報入力</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header, footer {
+            background-color: #92b6bd;
+            color: #fff;
+            padding: 5px 0;
+            position: fixed;
+            width: 100%;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        header {
+            top: 0;
+            height: 80px;
+        }
+
+        footer {
+            bottom: 0;
+            height: 40px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* 情報入力欄フィールド */
+        .container {
+            width: 800px;
+            border-radius: 7px;
+            padding: 0 0 18px 100px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            margin-top: 108px; /* header height */
+            margin-bottom: 65px; /* footer height */
+        }
+
+        /* 入力項目 */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* 郵便番号検索ボタン */
+        .search_btn {
+            width: 20mm;
+            height: 10mm;
+            font-size: 13px;
+            color: #fff;
+            background-color: #3674e6;
+            border: none;
+            border-radius: 5px;
+            margin-left: 3mm;
+        }
+        .search_btn:hover {
+            background-color: rgb(13, 99, 156);
+        }
+
+        /* 決済情報入力欄 */
+        .payinfo_field {
+            width: 90%;
+            border-radius: 7px;
+            background-color: #e7e5e5;
+            display: none;
+            padding: 10px 0px 10px 20px;
+        }
+
+        /* 短い入力欄 */
+        .short_field {
+            width: 45mm;
+        }
+
+        /* 通常入力欄 */
+        .middle_field {
+            width: 90mm;
+        }
+
+        /* 長い入力欄 */
+        .long_field {
+            width: 180mm;
+        }
+
+        /* 決済方法 */
+        #payment {
+            width: 50mm;
+        }
+
+        /* 入力情報確認ボタン */
+        .submit_btn {
+            margin-top: 30px;
+            padding: 10px 20px;
+            width: 45mm;
+            font-size: 18px;
+            color: #fff;
+            background-color: #ff8019;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .submit_btn:hover {
+            background-color: #ff5100;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="C:\Users\haru\Desktop\ファイル\js練習\img\40953.png" alt="header-logo" style="width: 25mm; padding-right: 15px;">
+    <h1>インターネット販売ショップ（練習用）</h1>
+</header>
+
+<div class="container">
+
+    <!-- お客様情報入力欄 -->
+    <div class="customerinfo_field">
+        <h3>お客様情報入力欄</h3>
+        <form action="/submit_form" method="POST">
+            <div class="form-group">
+                <label for="name">氏名</label>
+                <input class="short_field" type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="postal_code">郵便番号(ハイフンなし)</label>
+                <input class="short_field" type="text" id="zipcode" name="zipcode" required>
+                <button class="search_btn" id="search" type="button">住所検索</button>
+            </div>
+
+            <div class="form-group">
+                <label for="address">住所</label>
+                <input class="long_field" type="text" id="address" name="address" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">建物名</label>
+                <input class="long_field" type="text" id="Buildingname" name="Buildingname">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">電話番号</label>
+                <input class="short_field" type="tel" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">メールアドレス</label>
+                <input class="middle_field" type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="payment">決済方法</label>
+                <select id="payment" name="payment" required>
+                    <option value="no_selected">▼選択してください</option>
+                    <option value="credit_card">クレジットカード</option>
+                    <option value="bank_transfer">銀行振込</option>
+                    <option value="cash_on_delivery">代金引換</option>
+                </select>
+            </div>
+        </form>
+    </div>
+
+    <!-- 決済情報入力欄 -->
+    <div class="payinfo_field">
+        <form action="/submit_form" method="POST">
+            <h3>クレジットカード情報入力欄</h3>
+            <div class="form-group long_field">
+                <label for="card_number">カード番号</label>
+                <input type="text" id="cardnumber" name="cardnumber" required>
+            </div>
+
+            <div class="form-group short_field">
+                <label for="card_name">カード名義</label>
+                <input type="text" id="cardname" name="cardname" required>
+            </div>
+
+            <div class="form-group">
+                <label for="effective_date">有効期限</label>
+                <input class="short_field" type="date" id="effectivedate" name="effectivedate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="effective_date">セキュリティコード(CVV)</label>
+                <input class="short_field" type="tel" id="effectivedate" name="effectivedate" required>
+            </div>
+        </form>
+    </div>
+
+    <button class="submit_btn" type="submit">入力情報確認</button>
+</div>
+
+<!-- フッター -->
+<footer>
+    <small>Copyright 2024 © TMH MUSIC CORPORATION INC.</small>
+</footer>
+
+<!-- javascript -->
+<script>
+
+// 郵便番号入力フィールドからフォーカスを移動したときの処理(全角→半角)
+document.getElementById('zipcode').addEventListener('blur', function() {
+    const zipcodeField = document.getElementById('zipcode');
+
+    // 全角数字を半角に変換
+    const newzipcode = convertToHalfWidth(zipcodeField.value);
+
+    // 更新された値を設定
+    zipcodeField.value = newzipcode;
+});
+
+// 電話番号入力フィールドからフォーカスを移動したときの処理(全角→半角)
+document.getElementById('phone').addEventListener('blur', function() {
+    const phoneField = document.getElementById('phone');
+
+    // 全角数字を半角に変換
+    const newphone = convertToHalfWidth(phoneField.value);
+
+    // 更新された値を設定
+    phoneField.value = newphone;
+});
+
+// 郵便番号検索ボタンが押されたときの動作(住所検索)
+document.getElementById('search').addEventListener('click', function() {
+    const zipcode = document.getElementById('zipcode').value;
+    const apiURL = `https://zipcloud.ibsnet.co.jp/api/search?zipcode=${zipcode}`;
+
+    if(zipcode === '') {
+        alert("郵便番号が入力されていません")
+    } else {
+        fetch(apiURL)
+        .then(response => response.json())
+        .then(data => {
+            if (data.results) {
+                const address = data.results[0].address1 + data.results[0].address2 + data.results[0].address3;
+                document.getElementById('address').value = address;
+            } else {
+                alert('住所が見つかりませんでした。');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+});
+
+// クレジットカードが選択されたときの操作
+document.getElementById('payment').addEventListener('click', function() {
+    const payMent = document.getElementById('payment');
+    var elements = document.querySelectorAll('.payinfo_field');
+
+    if(payment.value === 'credit_card') {
+        elements.forEach(function(element) {
+            element.style.display = 'block'
+        });
+    } else {
+        elements.forEach(function(element) {
+            element.style.display = 'none'
+        });
+    }
+});
+
+// 全角から半角処理
+function convertToHalfWidth(str) {
+    return str.replace(/[０-９]/g, function(s) {
+        return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+    });
+}
+
+</script>
+
+</body>
+</html>
